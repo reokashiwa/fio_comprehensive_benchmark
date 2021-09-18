@@ -2,7 +2,7 @@
 
 PRODUCT_ID=$1
 TARGET_DEV=$2
-FIO="./fio"
+FIO="/usr/bin/fio"
 
 mkdir ${PRODUCT_ID}
 mkdir ${PRODUCT_ID}/${TARGET_DEV}
@@ -15,7 +15,7 @@ do
 		do
 			for numjobs in 1 2 4 8 16 32 64 128
 			do
-				${FIO} -filename=${TARGET_DEV} \
+				${FIO} -filename=/dev/${TARGET_DEV} \
 						   -direct=1 \
 						   -rw=${rw} \
 					     -bs=${bs}k \
